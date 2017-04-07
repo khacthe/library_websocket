@@ -1,0 +1,26 @@
+<tr>
+ <td><%= borrow_book.id %></td>
+  <td class="smaller-image_sm"><%= image_tag borrow_book.book.image.url if borrow_book.book.image? %></td>
+  <td><%= borrow_book.book.name %></td>
+  <td><%= borrow_book.user.fullname %></td>
+  <td><%= borrow_book.date_from.to_date %></td>
+  <td><%= borrow_book.date_to.to_date %></td>
+  <td>
+    <% if borrow_book.status == true %>
+      <span class="status_true">success</span>
+    <% else %>
+      <span class="status_false">waiting</span>
+    <% end %>
+   </td>
+  <td>
+    <%= link_to edit_admin_borrow_book_path(borrow_book), class: "btn_edit" do %>
+      <i class="fa fa-pencil-square-o"></i>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to admin_borrow_book_path(borrow_book),
+      method: :delete, class: "btn_delete" do %>
+        <i class="fa fa-trash-o"></i>
+    <% end %>
+  </td>
+</tr>

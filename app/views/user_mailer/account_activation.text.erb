@@ -1,0 +1,5 @@
+<%= t "sessions.hi" @user.fullname %>,
+
+<%= t "sessions.content_mail" %>
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

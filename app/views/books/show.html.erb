@@ -1,0 +1,84 @@
+<% provide(:title, @book.name) %>
+<div class="container main book_show">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="image_book">
+        <%= image_tag @book.image.url if @book.image? %>
+        <div class="stats">
+          <%= render 'shared/stats_book' %>
+        </div>
+        <div class="average-review-rating" data-score=<%= @rating %>></div>
+        <div id="follow_form_book_<%= @book.id %>">
+          <% if current_user.present? %>
+            <% if current_user.following_book?(@book) %>
+              <%= render "unfollow" %>
+            <% else %>
+              <%= render "follow" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="inforbooks">
+        <h4 class="title"><%= @book.name %></h4>
+        <div class="book_brow clearfix">
+          <div class="col-md-12">
+            <div id="borrow_form_book_<%= @book.id %>">
+            <% if current_user.present? %>
+              <% if current_user.borrowing_book?(@book) %>
+                <%= render "borrowed" %>
+              <% else %>
+                <%= form_for(current_user.borrow_books.build, remote: true) do |f| %>
+                  <div class="col-md-4">
+                  <%= f.label :date_from %>
+                  <%= f.date_field :date_from %>
+                  </div>
+                  <div class="col-md-4">
+                    <%= f.label :date_to %>
+                    <%= f.date_field :date_to %>
+                  </div>
+                  <div class="col-md-4">
+                    <%= f.submit "Borrow", class: "btn btn-primary" %>
+                  </div>
+                  <%= hidden_field_tag :book_id, @book.id %>
+                <% end %>
+              <% end %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="description_book">
+          <p><%= @book.description %></p>
+        </div>
+        <div class="show_comment">
+          <ul>
+            <%= render @book.commments %>
+          </ul>
+        </div>
+        <div class="comment">
+          <h3>Comments/rating</h3>
+          <%= render "commments/form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>

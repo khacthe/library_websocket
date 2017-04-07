@@ -1,0 +1,15 @@
+<tr>
+  <td><%= category.name %></td>
+  <td><%= category.created_at %></td>
+  <td>
+    <%= link_to edit_admin_category_path(category), class: "btn-edit" do %>
+      <i class="fa fa-pencil-square-o"></i>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to admin_category_path(category),
+      method: :delete, class: "btn_delete" do %>
+        <i class="fa fa-trash-o"></i>
+    <% end %>
+  </td>
+</tr>

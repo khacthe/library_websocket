@@ -1,0 +1,33 @@
+<% provide :title, t("users.list_users") %>
+<h3 class="title_page"><%= t "users.list_users" %></h3>
+<div class="bootstrap snippet">
+  <div class="main-box no-header clearfix">
+    <div class="main-box-body clearfix">
+      <%= link_to t("users.add_user"), new_admin_user_path, class: "add" %>
+      <%= form_tag admin_users_path, method: :get,
+        id: "users_search" do %>
+        <p class="admin-search">
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag t "users.search", fullname: nil %>
+        </p>
+        <div class="table-responsive" id="users_id">
+          <table class="table user-list">
+            <thead>
+              <tr>
+                <th><span><%= t "users.user" %></span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @users %>
+              <%= will_paginate @users %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+      <p>
+        <%= link_to t("user.export_excel"), admin_users_path(format: Settings.xls) %>
+       ff  <%= link_to t("user.export_excel"), admin_users_path(format: "html") %>
+      </p>
+    </div>
+  </div>
+</div>

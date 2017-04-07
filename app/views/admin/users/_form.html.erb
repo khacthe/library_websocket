@@ -1,0 +1,31 @@
+<%= form_for [:admin, @user] do |f| %>
+  <%= render "shared/error_messages", object: @user %>
+
+  <%= f.label :fullname %>
+  <%= f.text_field :fullname, class: "form-control" %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, class: "form-control" %>
+
+  <%= f.label :phone %>
+  <%= f.text_field :phone, class: "form-control" %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address, class: "form-control" %>
+
+  <%= f.label :is_admin %>
+  <%= f.select :is_admin, [[t("users.admin"), true],
+    [t("users.member"), false]] %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, class: "form-control" %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, class: "form-control" %>
+
+  <p class="picture">
+    <%= f.file_field :avatar %>
+  </p>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

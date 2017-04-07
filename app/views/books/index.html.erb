@@ -1,0 +1,21 @@
+<% provide(:title, t("books.list_books")) %>
+<div class="list_books main">
+  <div class="container">
+    <div class="row">
+      <%= form_tag books_path, method: :get, id: "book_search" do %>
+        <div class="form_search" >
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag t "users.search", name: nil %>
+        </div>
+      <% end %>
+      <% if @books.present? %>
+        <ul>
+          # <%= render @books %>
+        </ul>
+      <% else %>
+        <h5 class="not_avail"><%= t "home.resuft_not_avail" %></h5>
+      <% end %>
+      <%= will_paginate @books %>
+    </div>
+  </div>
+</div>

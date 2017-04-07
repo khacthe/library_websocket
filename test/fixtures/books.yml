@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  number_book: 1
+  pages_number: 1
+  author: one
+  categiry: one
+  publisher: one
+  user: one
+
+two:
+  name: MyString
+  description: MyText
+  number_book: 1
+  pages_number: 1
+  author: two
+  categiry: two
+  publisher: two
+  user: two

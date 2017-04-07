@@ -1,0 +1,4 @@
+<%= form_for(current_user.follow_authors.new, remote: true) do |f| %>
+  <div><%= hidden_field_tag :author_id, @author.id %></div>
+  <%= f.submit "Follow", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,35 @@
+<% provide :title, t("categories.list_categories") %>
+<h3 class="title_page"><%= t "categories.list_categories" %></h3>
+<div class="bootstrap snippet">
+  <div class="main-box no-header clearfix">
+    <div class="main-box-body clearfix">
+      <%= link_to t("categories.add_category"), new_admin_category_path, class: "add" %>
+      <%= form_tag admin_categories_path, method: :get,
+        id: "category_search" do %>
+        <p class="admin-search">
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag t "categories.search", name: nil %>
+        </p>
+        <div class="table-responsive" id="users_id">
+          <table class="table user-list">
+            <thead>
+              <tr>
+                <th><span><%= t "categories.name" %></span></th>
+                <th><span><%= t "categories.create_at" %></span></th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @categories %>
+              <%= will_paginate @categories %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+      <p>
+        <%= link_to t("user.export_excel"), admin_categories_path(format: Settings.xls) %>
+      </p>
+    </div>
+  </div>
+</div>

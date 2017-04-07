@@ -1,0 +1,38 @@
+<% provide :title, t("books.list_books") %>
+<h3 class="title_page"><%= t "books.list_books" %></h3>
+<div class="bootstrap snippet">
+  <div class="main-box no-header clearfix">
+    <div class="main-box-body clearfix">
+      <%= link_to t("books.add_book"), new_admin_book_path, class: "add" %>
+      <%= form_tag admin_books_path, method: :get,
+        id: "users_search" do %>
+        <p class="admin-search">
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag t "users.search", name: nil %>
+        </p>
+        <div class="table-responsive" id="users_id">
+          <table class="table user-list">
+            <thead>
+              <tr>
+                <th><span><%= t "books.thumnail" %></span></th>
+                <th><span><%= t "books.book_name" %></span></th>
+                <th><span><%= t "books.book_description" %></span></th>
+                <th><span><%= t "users.created_at" %></span></th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @books %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+      <p>
+        <%= will_paginate @books %>
+        <%= link_to t("user.export_excel"),
+          admin_books_path(format: Settings.xls) %>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<header>
+  <div class="header-content">
+    <div class="header-content-inner">
+      <h1 id="homeHeading"><%= Settings.title_website %></h1>
+      <hr>
+      <div class="input-group search_form home_search">
+        <%= form_tag books_path, method: :get do %>
+          <%= text_field_tag :search, params[:search],
+            placeholder: "Search Book", class: "form-control input-lg" %>
+          <span class="input-group-btn">
+            <%= submit_tag t "users.search",
+              class: "btn btn-info btn-lg", name: nil  %>
+          </span>
+        <% end %>
+      </div>
+      <% unless current_user.present? %>
+        <%= link_to t("sessions.login"), login_path, class: "btn btn-primary" %>
+        <%= link_to t("sessions.signup"), "", class: "btn btn-primary btn-xl" %>
+      <% end %>
+    </div>
+  </div>
+</header>

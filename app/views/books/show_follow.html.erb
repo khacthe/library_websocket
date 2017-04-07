@@ -1,0 +1,32 @@
+<% provide(:title, @title) %>
+  <div class="col-md-4">
+    <section class="book_info">
+     <%= image_tag @book.image.url if @book.image? %>
+      <h1><%= @book.name %></h1>
+      <span><%= link_to "view my profile", @book %></span>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+      <% if @books.any? %>
+        <div class="book_avatars">
+          <% @books.each do |book| %>
+            <%= image_tag @book.image.url if @book.image? %>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+  </div>
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @books.any? %>
+      <ul class="books follow">
+      <% @books.each do |book| %>
+        <li>
+          <span><%= image_tag book.image.url if book.image? %></span>
+          <span><%= link_to book.name, book, class: "book-link" %></span>
+        </li>
+    <% end %>
+      </ul>
+      <%= will_paginate %>
+    <% end %>
+  </div>

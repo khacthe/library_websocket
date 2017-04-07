@@ -1,0 +1,7 @@
+<div id="follow_form_book_<%= @book.id %>">
+  <% if current_user.following_book?(@book) %>
+    <%= render "unfollow" %>
+  <% else %>
+    <%= render "follow" %>
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+<tr>
+  <td><%= publisher.name %></td>
+  <td><%= publisher.created_at %></td>
+  <td>
+    <%= link_to edit_admin_publisher_path(publisher), class: "btn-edit" do %>
+      <i class="fa fa-pencil-square-o"></i>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to admin_publisher_path(publisher),
+      method: :delete, class: "btn_delete" do %>
+        <i class="fa fa-trash-o"></i>
+    <% end %>
+  </td>
+</tr>

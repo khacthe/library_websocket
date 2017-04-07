@@ -1,0 +1,36 @@
+maximum_name_email: 255
+maximum_name_fullname: 50
+minimum_password: 6
+number_per_page: 6
+number_per_page_user: 10
+# Static page
+link_title_book: "#"
+link_category_book: "#"
+name_category_book: "Book Educateon"
+link_category_book: "#"
+title_home_books: "Books new"
+link_image_full: "assets/portfolio/fullsize/1.jpg"
+tilel_portfolio: "Portfolio name"
+text_menu_home: "Home"
+text_menu_book: "Books"
+text_menu_contact: "Contact us"
+link_menu_home: "#page-top"
+link_menu_book: "#books"
+link_menu_contact: "#contact_us"
+title_website: "WELCOME TO PROJECT MANAGER LIBRARY"
+title_logo: "manager library"
+text_login: "Login"
+text_signup: "Signup"
+plancer_search: "Search Book"
+title_home_contact: "Let's Get In Touch!"
+description_home_contact: "Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!"
+phone_home_contact: "0987.654.567"
+email_home_contact: "framgialibrary@gmail.com"
+link_search: "#"
+link_login: "#"
+link_signup: "#"
+link_setting: "#"
+link_profile: "#"
+link_logout: "#"
+text_footer: ""
+xls: "xls"

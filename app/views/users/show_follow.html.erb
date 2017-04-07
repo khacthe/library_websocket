@@ -1,0 +1,29 @@
+<% provide(:title, @title) %>
+<div class="container main">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="profile">
+        <%= image_tag @user.avatar.url,
+          class: "img-responsive" if @user.avatar? %>
+      <h3><%= @user.fullname %></h3>
+      <%= render "follow_form" if logged_in? %>
+      </div>
+      <div class="stats">
+        <%= render "shared/stats" %>
+      </div>
+    </div>
+    <div class="col-md-8 list_users list_folowing">
+      <h3><%= @title %></h3>
+      <% if @users.any? %>
+        <ul class="users follow">
+          <% @users.each do |user| %>
+            <li><%= image_tag user.avatar.url,
+              class: "img-responsive" if user.avatar? %>
+              <h4 class="name_user"><%= user.fullname %></h4>
+            </li>
+          <% end %>
+        </ul>
+    <% end %>
+    </div>
+  </div>
+</div>

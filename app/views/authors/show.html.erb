@@ -1,0 +1,22 @@
+<% provide(:title, @author.name) %>
+<div class="row">
+  <div class="col-md-4">
+    <section>
+      <h4><%= @author.name %></h4>
+        <div id="follow_form_author_<%= @author.id %>">
+          <% if current_user.following_author?(@author) %>
+            <%= render "unfollow" %>
+          <% else %>
+            <%= render "follow" %>
+          <% end %>
+        </div>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats_author' %>
+    </section>
+  </div>
+  <div class="col-md-8">
+
+  </div>
+</div>
+

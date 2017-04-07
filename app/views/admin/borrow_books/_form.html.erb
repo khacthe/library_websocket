@@ -1,0 +1,4 @@
+<%= form_for [:admin, @borrow_book] do |f| %>
+  <%= f.select :status, [["success", true], ["waiting", false]] %>
+  <%= f.submit yield(:button_text), classs: "btn btn-primary" %>
+<% end %>

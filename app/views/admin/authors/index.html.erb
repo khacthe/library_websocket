@@ -1,0 +1,36 @@
+<% provide :title, t("authors.list_authors") %>
+<h3 class="title_page"><%= t "authors.list_authors" %></h3>
+<div class="bootstrap snippet">
+  <div class="main-box no-header clearfix">
+    <div class="main-box-body clearfix">
+      <%= link_to t("authors.add_author"), new_admin_author_path, class: "add" %>
+      <%= form_tag admin_authors_path, method: :get,
+        id: "author_search" do %>
+        <p class="admin-search">
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag t "authors.search", name: nil %>
+        </p>
+        <div class="table-responsive" id="users_id">
+          <table class="table user-list">
+            <thead>
+              <tr>
+                <th><span><%= t "authors.name" %></span></th>
+                <th><span><%= t "authors.create_at" %></span></th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @author %>
+              <%= will_paginate @author %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+      <p>
+        <%= link_to t("user.export_excel"),
+          admin_authors_path(format: Settings.xls) %>
+      </p>
+    </div>
+  </div>
+</div>

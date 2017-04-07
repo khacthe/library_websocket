@@ -1,0 +1,37 @@
+<% provide :title, t("books.list_books") %>
+<h3 class="title_page"><%= t "books.list_books" %></h3>
+<div class="bootstrap snippet">
+  <div class="main-box no-header clearfix">
+    <div class="main-box-body clearfix">
+      <%= form_tag admin_borrow_books_path, method: :get,
+        id: "users_search" do %>
+        <p class="admin-search">
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag t "users.search", name: nil %>
+        </p>
+        <div class="table-responsive" id="users_id">
+          <table class="table user-list">
+            <thead>
+              <tr>
+                <th><span>Borrow id</span></th>
+                <th><span>Image</span></th>
+                <th><span>Books name</span></th>
+                <th><span>User</span></th>
+                <th><span>Status</span></th>
+                <th><span>Date from</span></th>
+                <th><span>Date to</span></th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @borrow_books %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+      <p>
+        <%= will_paginate @borrow_books %>
+    </div>
+  </div>
+</div>

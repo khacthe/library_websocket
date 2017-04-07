@@ -1,0 +1,23 @@
+<% if( user.activated? && !user.is_admin?) %>
+  <li class="user">
+    <div class="content_user">
+    <%= image_tag user.avatar.url, class: "img-responsive" if user.avatar? %>
+      <h4 class="name_user"><%= user.fullname %></h4>
+      <% unless current_user?(@user) %>
+        <div id="follow_form_user_<%= user.id %>" class="btn_book">
+          <% unless current_user.following?(user) %>
+            <%= form_for(current_user.active_followusers.build, remote: true) do |f| %>
+              <div><%= hidden_field_tag :followed_id, user.id %></div>
+            <%= f.submit "Follow", class: "btn btn-primary" %>
+            <% end %>
+          <% else %>
+            <%= form_for(current_user.active_followusers.find_by(followed_id: user.id),
+              html: { method: :delete }, remote: true) do |f| %>
+              <%= f.submit "Unfollow", class: "btn" %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </li>
+<% end %>

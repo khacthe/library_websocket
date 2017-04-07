@@ -1,0 +1,7 @@
+<div class="borrow_book">
+   <%= form_for(@book, @book.borrow_book.build ) do |f| %>
+    <%= f.datetime_field :date_from %>
+    <%= f.datetime_field :date_to %>
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% end %>
+</div>

@@ -1,0 +1,3 @@
+<%= form_for(current_user.follow_books.find_by(book_id: @book.id), html: { method: :delete }, remote: true) do |f| %>
+  <%= f.submit "Unfollow", class: "btn" %>
+<% end %>

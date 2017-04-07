@@ -1,0 +1,26 @@
+<% provide :title, t("sessions.forgot_password") %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="content-login">
+        <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+         <% flash.each do |message_type, message| %>
+            <%= content_tag(:div, message,
+              class: "alert alert-#{message_type}") %>
+          <% end %>
+          <%= hidden_field_tag :email, @user.email %>
+
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "form-control" %>
+
+          <%= f.label :password_confirmation,
+            t "password_resets.confirmation" %>
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+
+          <%= f.submit t("password_resets.update_password"),
+            class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

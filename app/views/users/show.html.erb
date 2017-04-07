@@ -1,0 +1,63 @@
+<% provide(:title, @user.fullname) %>
+<div class="container main">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="profile">
+        <%= image_tag @user.avatar.url if @user.avatar? %>
+        <h3><%= @user.fullname %></h3>
+        <%= render "follow_form" if logged_in? %>
+        <div class="stats">
+          <%= render "shared/stats" %>
+        </div>
+        <div class="inforuser">
+          <p>Email: <span><%= @user.email %></span></p>
+          <p>Address: <span><%= @user.address %></span></p>
+          <p>Phone: <span><%= @user.phone %></span></p>
+          <p><%= link_to "Edit information", edit_user_path(current_user) %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="col-md-12 list_users list_folowing">
+       <h3 class="title">List book borrowing</h3>
+        <% if @user.borrowing_book.present? %>
+          <ul class="users follow">
+            <% @user.borrowing_book.each do |book| %>
+              <li><%= image_tag book.image.url,
+                class: "img-responsive" if book.image? %>
+                <h4 class="name_user"><%= link_to book.name, book %></h4>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+      <div class="col-md-12 list_users list_folowing">
+       <h3 class="title">List users following</h3>
+        <% if @user.following.present? %>
+          <ul class="users follow">
+            <% @user.following.each do |user| %>
+              <li><%= image_tag user.avatar.url,
+                class: "img-responsive" if user.avatar? %>
+                <h4 class="name_user"><%= user.fullname %></h4>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+      <div class="col-md-12 list_users list_folowing">
+       <h3 class="title">List books following</h3>
+        <% if @user.following_book.present? %>
+          <ul class="users follow">
+            <% @user.following_book.each do |book| %>
+              <li><%= image_tag book.image.url,
+                class: "img-responsive" if book.image? %>
+                <h4 class="name_user"><%= link_to book.name, book %></h4>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

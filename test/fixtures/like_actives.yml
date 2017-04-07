@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  is_like: false
+  user: one
+  book: one
+
+two:
+  is_like: false
+  user: two
+  book: two

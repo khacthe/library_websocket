@@ -1,0 +1,21 @@
+<% provide(:title, t("authors.list_authors")) %>
+<div class="list_authors main">
+  <div class="container">
+    <div class="row">
+      <%= form_tag authors_path, method: :get, id: "book_search" do %>
+        <div class="form_search" >
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag t "users.search", name: nil %>
+        </div>
+      <% end %>
+      <% if @authors.present? %>
+        <ul>
+          <%= render @authors %>
+        </ul>
+      <% else %>
+        <h5 class="not_avail"><%= t "home.resuft_not_avail" %></h5>
+      <% end %>
+      <%= will_paginate @authors %>
+    </div>
+  </div>
+</div>
