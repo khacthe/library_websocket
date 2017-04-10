@@ -12,4 +12,9 @@
     </strong>
     followers
   </a>
+  <p>
+    <a href="<%= borrowing_book_user_path(@user) %>">
+    Borrowing <%= @user.borrowing_book.count %> books
+  </a>
+  </p>
 </div>

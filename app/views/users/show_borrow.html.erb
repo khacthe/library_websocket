@@ -1,0 +1,56 @@
+<% provide(:title, @title) %>
+<div class="container main borrowing_book">
+  <div class="row">
+    <table class="table">
+    <h2 class="list-title">My list borrowing books</h2>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Image</th>
+        <th>Book name</th>
+        <th>Date from</th>
+        <th>Date to</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <% if @brorrows.any? %>
+      <% @brorrows.each do |brorrow| %>
+        <% if DateTime.now.to_date  >= brorrow.date_to.to_date %>
+          <tr class="danger">
+            <td><%= brorrow.id %></td>
+            <td class="smaller-image-thum"><%= image_tag brorrow.book.image.url,
+              class: "img-responsive" if brorrow.book.image? %></td>
+            <td><%= brorrow.book.name %></td>
+            <td><%= brorrow.date_from.to_date.strftime("%d-%m-%Y") %></td>
+            <td><%= brorrow.date_to.to_date.strftime("%d-%m-%Y") %></td>
+            <td>
+              <% if brorrow.status == true %>
+                <span class="status_true">success</span>
+              <% else %>
+                <span class="status_false">waiting</span>
+              <% end %>
+            </td>
+          </tr>
+        <% else %>
+          <tr class="success">
+            <td><%= brorrow.id %></td>
+            <td class="smaller-image-thum"><%= image_tag brorrow.book.image.url,
+              class: "img-responsive" if brorrow.book.image? %></td>
+            <td><%= brorrow.book.name %></td>
+            <td><%= brorrow.date_from.to_date.strftime("%d-%m-%Y") %></td>
+            <td><%= brorrow.date_to.to_date.strftime("%d-%m-%Y") %></td>
+            <td>
+              <% if brorrow.status == true %>
+                <span class="status_true">success</span>
+              <% else %>
+                <span class="status_false">waiting</span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>

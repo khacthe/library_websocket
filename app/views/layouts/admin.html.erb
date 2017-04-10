@@ -10,6 +10,34 @@
       "data-turbolinks-track": "reload" %>
   </head>
   <body>
+
+      <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed">
+              <span class="sr-only"></span><i class="fa fa-bars"></i>
+            </button>
+            <%= link_to image_tag("logo.png"), root_path, class: "logo_f" %>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <%= link_to t("sessions.account"), Settings.link_setting,
+                    "data-toggle": "dropdown", class: "dropdown-toggle" %>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "Profile", current_user %></li>
+                    <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                    <li><%= link_to "List borrowing books", borrowing_book_user_path(current_user) %></li>
+                    <li>
+                      <%= link_to t("sessions.logout"), logout_path,
+                        method: "delete" %>
+                    </li>
+                  </ul>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     <main>
       <div class="container admin-page">
         <div class="row">

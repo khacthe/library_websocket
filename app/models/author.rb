@@ -5,6 +5,8 @@ class Author < ApplicationRecord
 
   scope :search_author_name, -> search {where("name LIKE ?", "%#{search}%")}
 
+  mount_uploader :authorimage, AuthorimageUploader
+
   def self.to_xls options = {}
     column_names = ["id", "name", "description" "created_at"]
     CSV.generate(options) do |csv|

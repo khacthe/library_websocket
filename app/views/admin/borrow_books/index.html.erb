@@ -25,13 +25,15 @@
               </tr>
             </thead>
             <tbody>
-              <%= render @borrow_books %>
+            <% if @borrow_books.any? %>
+              <%= render partial: "borrow_book", collection: @borrow_books, as: :borrow_book %>
+            <% end %>
             </tbody>
           </table>
         </div>
       <% end %>
       <p>
-        <%= will_paginate @borrow_books %>
+
     </div>
   </div>
 </div>

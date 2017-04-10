@@ -29,7 +29,6 @@ class CommmentsController < ApplicationController
 
   def destroy
     if @commment.destroy
-      flash[:success] = "Deleted !"
     else
       flash[:alert] = t "don't pemission deleted !"
     end

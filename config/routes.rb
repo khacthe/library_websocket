@@ -30,20 +30,14 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
+      get :following_book
+      get :borrowing_book
+      get :liking_book
+      get :following_author
     end
   end
 
   resources :books do
-    member do
-      get :following_book, :followers_book
-      get :liking_book, :likewers_book
-    end
     resources :commments
-  end
-
-  resources :author do
-    member do
-      get :following_author, :followers_author
-    end
   end
 end

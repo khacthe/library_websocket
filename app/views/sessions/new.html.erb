@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
         <div class="content-login">
+          <h2 class="title-login">Login</h2>
           <%= form_for(:session, url: login_path) do |f| %>
             <% flash.each do |message_type, message| %>
               <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>

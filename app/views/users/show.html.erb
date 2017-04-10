@@ -28,11 +28,12 @@
                 <h4 class="name_user"><%= link_to book.name, book %></h4>
               </li>
             <% end %>
+
           </ul>
         <% end %>
       </div>
       <div class="col-md-12 list_users list_folowing">
-       <h3 class="title">List users following</h3>
+        <h3 class="title">List users following</h3>
         <% if @user.following.present? %>
           <ul class="users follow">
             <% @user.following.each do |user| %>

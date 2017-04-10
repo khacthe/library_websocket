@@ -15,7 +15,7 @@
       </div>
       <% unless current_user.present? %>
         <%= link_to t("sessions.login"), login_path, class: "btn btn-primary" %>
-        <%= link_to t("sessions.signup"), "", class: "btn btn-primary btn-xl" %>
+        <%= link_to t("sessions.signup"), signup_path, class: "btn btn-primary btn-xl" %>
       <% end %>
     </div>
   </div>

@@ -16,6 +16,10 @@ class UsersController < ApplicationController
   def show
   end
 
+  def new
+    @user = User.new
+  end
+
   def edit
   end
 
@@ -30,28 +34,38 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.new user_params
+    if @user.save
+      @user.send_activation_email
+      flash[:success] = t "sessions.please_check_email"
+      redirect_to login_path
+    else
+      flash[:alert] = t "sessions.signup_error"
+      render :new
+    end
   end
 
-  # def following
-  #   @title = "Following"
-  #   @user  = User.find_by id: params[:id]
-  #   @users = @user.following.paginate page: params[:page]
-  #   render "show_follow"
-  # end
+  def following
+    @title = "Following"
+    @user  = User.find_by id: params[:id]
+    @users = @user.following.paginate page: params[:page]
+    render "show_follow"
+  end
 
-  # def followers
-  #   @title = "Followers"
-  #   @user  = User.find_by id: params[:id]
-  #   @users = @user.followers.paginate page: params[:page]
-  #   render "show_follow"
-  # end
+  def followers
+    @title = "Followers"
+    @user  = User.find_by id: params[:id]
+    @users = @user.followers.paginate page: params[:page]
+    render "show_follow"
+  end
 
-  # def borrowing_book
-  #   @title = "Borrowing"
-  #   @user  = User.find_by id: params[:id]
-  #   @users = @user.borrowing.paginate page: params[:page]
-  #   render "show_borrow"
-  # end
+  def borrowing_book
+    @title = "Borrowing"
+    @user  = User.find_by id: params[:id]
+    @brorrows = @user.borrow_books.paginate page: params[:page]
+    @books = @user.borrowing_book.paginate page: params[:page]
+    render "show_borrow"
+  end
 
   private
 
