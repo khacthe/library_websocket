@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :following_author, through: :follow_authors, source: :author
   has_many :liking_book, through: :like_actives, source: :book
   has_many :borrowing_book, through: :borrow_books, source: :book
-
+  has_many :notifications, dependent: :destroy
   validates :fullname,  presence: true,
     length: {maximum: Settings.maximum_name_email}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

@@ -17,3 +17,4 @@
 //= require_tree .
 //= require scrollreveal
 //= require jquery.magnific-popup
+//= require jquery.transit.min

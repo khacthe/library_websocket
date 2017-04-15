@@ -72,4 +72,5 @@ Rails.application.configure do
 
   # Send email in development mode.
   config.action_mailer.perform_deliveries = true
+  config.action_cable.allowed_request_origins = ["http://0.0.0.0:3000"]
 end

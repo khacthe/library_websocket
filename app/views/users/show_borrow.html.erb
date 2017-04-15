@@ -24,10 +24,12 @@
             <td><%= brorrow.date_from.to_date.strftime("%d-%m-%Y") %></td>
             <td><%= brorrow.date_to.to_date.strftime("%d-%m-%Y") %></td>
             <td>
-              <% if brorrow.status == true %>
-                <span class="status_true">success</span>
-              <% else %>
-                <span class="status_false">waiting</span>
+              <% if brorrow.status == nil %>
+                <span class="status_waiting">waiting</span>
+                <% elsif brorrow.status == true %>
+                  <span class="status_true">success</span>
+                <% else %>
+                  <span class="status_false">reject</span>
               <% end %>
             </td>
           </tr>
@@ -40,10 +42,12 @@
             <td><%= brorrow.date_from.to_date.strftime("%d-%m-%Y") %></td>
             <td><%= brorrow.date_to.to_date.strftime("%d-%m-%Y") %></td>
             <td>
-              <% if brorrow.status == true %>
-                <span class="status_true">success</span>
-              <% else %>
-                <span class="status_false">waiting</span>
+              <% if brorrow.status == nil %>
+                <span class="status_waiting">waiting</span>
+                <% elsif brorrow.status == true %>
+                  <span class="status_true">success</span>
+                <% else %>
+                  <span class="status_false">reject</span>
               <% end %>
             </td>
           </tr>

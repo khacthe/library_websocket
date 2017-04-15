@@ -6,10 +6,12 @@
   <td><%= borrow_book.date_from.to_date %></td>
   <td><%= borrow_book.date_to.to_date %></td>
   <td>
-    <% if borrow_book.status == true %>
-      <span class="status_true">success</span>
-    <% else %>
-      <span class="status_false">waiting</span>
+    <% if borrow_book.status == nil %>
+      <span class="status_waiting">waiting</span>
+      <% elsif borrow_book.status == true %>
+        <span class="status_true">success</span>
+      <% else %>
+        <span class="status_false">reject</span>
     <% end %>
    </td>
   <td>

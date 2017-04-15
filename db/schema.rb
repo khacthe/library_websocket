@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405034021) do
+ActiveRecord::Schema.define(version: 20170412064831) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "name"
@@ -100,6 +100,17 @@ ActiveRecord::Schema.define(version: 20170405034021) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_like_actives_on_book_id"
     t.index ["user_id"], name: "index_like_actives_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "notification_type"
+    t.string   "notification"
+    t.string   "notification_link"
+    t.boolean  "read",              default: false
+    t.boolean  "checked",           default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "publishers", force: :cascade do |t|

@@ -871,6 +871,9 @@ a.add{
 .status_true{
   color:#0be835;
 }
+.status_waiting{
+  color:#0b3ce8;
+}
 .status_false{
   color:#eb3812;
 }
@@ -987,3 +990,26 @@ table{
   }
 }
 
+.nitifitions{
+  padding: 10px;
+  img{
+    max-width: 30px;
+  }
+  #notification-number {
+    position: absolute;
+    top: 2px;
+    left: 20px;
+    background-color: #d44e03;
+    color: #fff;
+    border-radius: 3px;
+    padding: 1px 3px;
+    font: 16px Verdana;
+  }
+}
+
+.not-read {
+  background-color: #E9EBEE;
+}
+.not-read a:hover, .not-read a:focus, .not-read a:active {
+  background-color: #F6F7F9;
+}

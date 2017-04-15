@@ -1,6 +1,10 @@
 class FollowBooksController < ApplicationController
   before_action :logged_in_user
 
+  def index
+    @follow_books = FollowBook.all
+  end
+
   def create
     @book = Book.find params[:book_id]
     current_user.follow_book @book

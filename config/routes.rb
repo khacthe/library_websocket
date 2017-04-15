@@ -40,4 +40,7 @@ Rails.application.routes.draw do
   resources :books do
     resources :commments
   end
+
+  # Websockets resemble this URL
+  mount ActionCable.server => '/cable'
 end

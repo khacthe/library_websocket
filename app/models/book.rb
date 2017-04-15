@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   has_many :passive_followbooks, class_name: "FollowBook",
     foreign_key: "book_id", dependent: :destroy
   has_many :followers_book, through: :passive_followbooks, source: :user_id
+  # has_many :notifications, as: :notificationable
 
   belongs_to :user
   belongs_to :category

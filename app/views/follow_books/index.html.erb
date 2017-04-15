@@ -1,0 +1,5 @@
+<ul id="show_notifition">
+  <%= @follow_books.each do |follow_book| %>
+    <li><%= follow_book.user.fullname %> follow book %<= follow_book.book.name %></li>
+  <% end %>
+</ul>

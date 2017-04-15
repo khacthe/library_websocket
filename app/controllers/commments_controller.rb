@@ -21,6 +21,7 @@ class CommmentsController < ApplicationController
     @commment.book_id = @book.id
     @commment.user_id = current_user.id
     if @commment.save
+      create_notification @commment
       redirect_to @book
     else
       render :new
@@ -60,11 +61,10 @@ class CommmentsController < ApplicationController
     @commment = Commment.find params[:id]
   end
 
-  # def find_user_comment
-  #   binding.pry
-  #   unless (@commment.user_id == current_user.id)
-  #     flash[:alert] = "don't find book"
-  #     redirect_to @book
-  #   end
-  # end
+  def create_notification comment
+    @follow_books = FollowBook.find_all_by_book comment.book_id
+    @follow_books.each do |followbook|
+      Notification.create( user_id: followbook.user_id, notification_type: "comment", notification: "#{current_user.fullname} comment in #{@book.name}", notification_link: "#{book_path(@book)}" )
+    end
+  end
 end

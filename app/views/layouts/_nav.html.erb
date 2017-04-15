@@ -1,3 +1,4 @@
+
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -35,6 +36,40 @@
               </li>
             </ul>
           </li>
+          <li class="nitifitions">
+            <%= image_tag("icon.png") %>
+            <span  id="notification-number">3</span>
+        </li>
+
+
+            <li class="dropdown">
+  <%= link_to "#!", class: "dropdown-toggle", id: "noti-count", data: {toggle: "dropdown"},
+    aria: {haspopup: "true", expanded: "false"} do %>
+    <span class="fa fa-globe"></span>
+    <span class="badge badge-danger" id="badge-dange_<%= current_user.id %>" data-noti-count="<%= current_user.notifications.num_not_check %>">
+      <%= current_user.notifications.num_not_check %>
+    </span>
+    <span class="caret"></span>
+  <% end %>
+
+    <ul class="dropdown-menu dropdown-notification scrollable-menu" id="show_notifition_<%= current_user.id %>" >
+      <% if current_user.notifications.any?  %>
+        <% current_user.notifications.each do |notification| %>
+          <li><%= link_to "#{notification.notification}", notification.notification_link %></li>
+        <% end %>
+      <% end %>
+    </ul>
+</li>
+
+
+
+
+
+
+
+
+
+
         <% else %>
           <li><%= link_to t("sessions.login"), login_path,
             class: "" %>
