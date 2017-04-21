@@ -31,7 +31,7 @@ class BooksController < ApplicationController
   private
 
   def load_book
-    @book = Book.find_by id: params[:id]
+    @book = Book.find_by slug: params[:id]
     return if @book
     flash[:alert] = t "users.nil_user"
     redirect_to root_path

@@ -1,39 +1,40 @@
-<% provide :title, t("books.list_books") %>
-<h3 class="title_page"><%= t "books.list_books" %></h3>
-<div class="bootstrap snippet">
-  <div class="main-box no-header clearfix">
-    <div class="main-box-body clearfix">
-      <%= form_tag admin_borrow_books_path, method: :get,
-        id: "users_search" do %>
+<% provide :title, "List borrow books" %>
+
+
+<div class="panel-heading">List borrow books</div>
+<div class="panel-body">
+  <div class="main-box-body clearfix">
+    <%= form_tag admin_borrow_books_path, method: :get,
+      id: "users_search" do %>
+      <div class="tab_search clearfix">
         <p class="admin-search">
-          <%= text_field_tag :search, params[:search] %>
+          <%= text_field_tag :search, params[:search], placeholder:"Search id..." %>
           <%= submit_tag t "users.search", name: nil %>
         </p>
-        <div class="table-responsive" id="users_id">
-          <table class="table user-list">
-            <thead>
-              <tr>
-                <th><span>Borrow id</span></th>
-                <th><span>Image</span></th>
-                <th><span>Books name</span></th>
-                <th><span>User</span></th>
-                <th><span>Status</span></th>
-                <th><span>Date from</span></th>
-                <th><span>Date to</span></th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-              </tr>
-            </thead>
-            <tbody>
+      </div>
+      <div class="table-responsive" id="users_id">
+        <table class="table user-list">
+          <thead>
+            <tr>
+              <th><span>Borrow id</span></th>
+              <th><span>Image</span></th>
+              <th><span>Books name</span></th>
+              <th><span>User</span></th>
+              <th><span>Status</span></th>
+              <th><span>Date from</span></th>
+              <th><span>Date to</span></th>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
             <% if @borrow_books.any? %>
               <%= render partial: "borrow_book", collection: @borrow_books, as: :borrow_book %>
             <% end %>
-            </tbody>
-          </table>
-        </div>
-      <% end %>
-      <p>
-
-    </div>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+    <%= will_paginate @borrow_books %>
   </div>
 </div>

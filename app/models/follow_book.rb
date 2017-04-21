@@ -1,6 +1,4 @@
 class FollowBook < ApplicationRecord
-  after_create_commit {FollowbookBroadcastJob.perform_later self}
-
   belongs_to :user
   belongs_to :book
 

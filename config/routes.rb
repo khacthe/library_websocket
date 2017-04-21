@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/signup", to: "users#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  put "/check_notification", to: "notifications#notification_checked"
 
   resources :users, except: [:destroy]
   resources :books, only: [:index, :show]
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   resources :follow_authors, only: [:create, :destroy]
   resources :like_actives, only: [:create, :destroy]
   resources :borrow_books
+  resources :notifications, only: [:update]
 
   namespace :admin do
     resources :users

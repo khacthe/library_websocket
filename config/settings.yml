@@ -1,8 +1,9 @@
 maximum_name_email: 255
 maximum_name_fullname: 50
 minimum_password: 6
-number_per_page: 6
+number_per_page: 10
 number_per_page_user: 10
+number_per_page_list: 20
 # Static page
 link_title_book: "#"
 link_category_book: "#"
@@ -34,3 +35,5 @@ link_profile: "#"
 link_logout: "#"
 text_footer: ""
 xls: "xls"
+mail_config: "memberaoe@gmail.com"
+pass_config: "youandme"

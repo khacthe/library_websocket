@@ -1,6 +1,6 @@
 <h1><%= t "sessions.mail_title" %></h1>
 <p>
-  <%= t "sessions.hi" @user.fullname %>, <%= t "sessions.content_mail" %>
+  <%=  @user.fullname %>, <%= t("sessions.content_mail") %>
 </p>
 <%= link_to t("sessions.activate"), edit_account_activation_url(@user.activation_token,
   email: @user.email) %>

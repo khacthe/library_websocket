@@ -1,6 +1,6 @@
 <tr>
   <td><%= author.name %></td>
-  <td><%= author.created_at %></td>
+  <td><%= except_text author.description.to_s, 300 %></td>
   <td>
     <%= link_to edit_admin_author_path(author), class: "btn-edit" do %>
       <i class="fa fa-pencil-square-o"></i>

@@ -1,4 +1,2 @@
-<%= form_for(current_user.follow_authors.build, remote: true) do |f| %>
-  <div><%= hidden_field_tag :author_id, @author.id %></div>
-  <%= f.submit "Follow", class: "btn btn-primary" %>
-<% end %>
+<%= link_to t("users.follow"), "#", class: "followauthor",
+  "data-id": @author.id, remote: true %>

@@ -65,7 +65,7 @@ class Admin::AuthorsController < Admin::BaseController
   end
 
   def load_author
-    @author = Author.find_by id: params[:id]
+    @author = Author.find_by slug: params[:id]
     return if @author
     flash[:alert] = t "users.nil_user"
     redirect_to root_path

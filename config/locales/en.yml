@@ -37,6 +37,8 @@ en:
     search: "Search"
     nil_user: "User not valid !"
     the_form_contains: "The form contains"
+    follow: "Follow"
+    unfollow: "Unfollow"
 
   sessions:
     login_success: "Login success"

@@ -43,7 +43,7 @@ class CommmentsController < ApplicationController
   end
 
   def find_book
-    @book = Book.find_by id: params[:book_id]
+    @book = Book.find_by slug: params[:book_id]
     unless @book.present?
       flash[:alert] = "don't find book"
       redirect_to root_path
@@ -64,7 +64,9 @@ class CommmentsController < ApplicationController
   def create_notification comment
     @follow_books = FollowBook.find_all_by_book comment.book_id
     @follow_books.each do |followbook|
-      Notification.create( user_id: followbook.user_id, notification_type: "comment", notification: "#{current_user.fullname} comment in #{@book.name}", notification_link: "#{book_path(@book)}" )
+      unless followbook.user_id == current_user.id
+        Notification.create( user_id: followbook.user_id, notification_type: "comment", notification: "#{current_user.fullname} comment in #{@book.name}", notification_link: "#{book_path(@book)}" )
+      end
     end
   end
 end

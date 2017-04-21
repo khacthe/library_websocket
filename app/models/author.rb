@@ -1,4 +1,8 @@
 class Author < ApplicationRecord
+
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
   has_many :books
 
   validates :name, presence: true, uniqueness: true
@@ -15,5 +19,11 @@ class Author < ApplicationRecord
         csv << author.attributes.values_at(*column_names)
       end
     end
+  end
+
+  private
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
   end
 end

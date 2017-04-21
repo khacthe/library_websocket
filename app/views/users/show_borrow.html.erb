@@ -23,15 +23,11 @@
             <td><%= brorrow.book.name %></td>
             <td><%= brorrow.date_from.to_date.strftime("%d-%m-%Y") %></td>
             <td><%= brorrow.date_to.to_date.strftime("%d-%m-%Y") %></td>
-            <td>
-              <% if brorrow.status == nil %>
-                <span class="status_waiting">waiting</span>
-                <% elsif brorrow.status == true %>
-                  <span class="status_true">success</span>
-                <% else %>
-                  <span class="status_false">reject</span>
-              <% end %>
-            </td>
+            <% if brorrow.status.present?  %>
+              <td class="<%= brorrow.status %>"><%= brorrow.status %></td>
+            <% else %>
+              <td class="waiting">Waiting</td>
+            <% end %>
           </tr>
         <% else %>
           <tr class="success">
@@ -41,15 +37,11 @@
             <td><%= brorrow.book.name %></td>
             <td><%= brorrow.date_from.to_date.strftime("%d-%m-%Y") %></td>
             <td><%= brorrow.date_to.to_date.strftime("%d-%m-%Y") %></td>
-            <td>
-              <% if brorrow.status == nil %>
-                <span class="status_waiting">waiting</span>
-                <% elsif brorrow.status == true %>
-                  <span class="status_true">success</span>
-                <% else %>
-                  <span class="status_false">reject</span>
-              <% end %>
-            </td>
+            <% if brorrow.status.present?  %>
+              <td class="<%= brorrow.status %>"><%= brorrow.status %></td>
+            <% else %>
+              <td class="waiting">Waiting</td>
+            <% end %>
           </tr>
         <% end %>
       <% end %>

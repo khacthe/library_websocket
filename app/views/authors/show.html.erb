@@ -1,7 +1,7 @@
 <% provide(:title, @author.name) %>
 <div class="row main">
   <div class="col-md-3">
-    <div class="profile">
+    <div class="profile profile_author">
       <h4><%= @author.name %></h4>
       <div id="follow_form_author_<%= @author.id %>">
         <% if current_user.following_author?(@author) %>
@@ -15,7 +15,17 @@
   </div>
   <div class="col-md-9">
     <div class="col-md-12 list_users list_folowing">
-      <h3 class="title">List book borrowing</h3>
+     <h3 class="title">List book</h3>
+      <% if @author.books.present? %>
+        <ul class="users follow"> 
+          <% @author.books.each do |book| %>
+            <li><%= image_tag book.image.url,
+              class: "img-responsive" if book.image? %>
+              <h4 class="name_user"><%= link_to book.name, book %></h4>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
 </div>

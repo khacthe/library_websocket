@@ -29,6 +29,8 @@ gem "will_paginate-bootstrap"
 gem "carrierwave", "0.11.2"
 gem "mini_magick", "4.5.1"
 gem "pry", "~> 0.10.4"
+gem 'whenever'
+gem 'friendly_id', '~> 5.2', '>= 5.2.1'
 
 group :development, :test do
   # Use mysql data

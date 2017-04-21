@@ -29,7 +29,7 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -59,16 +59,16 @@ Rails.application.configure do
       enable_starttls_auto: true,
       address: "smtp.gmail.com" ,
       port: 587,
-      domain: "" ,
+      domain: "gmail.com" ,
       authentication: :login,
-      user_name: "",
-      password: ""
+      user_name: "memberaoe@gmail.com",
+      password: "youandme"
   }
 
 
   #config.action_mailer.default_charset = "utf-8"
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => "" }
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
 
   # Send email in development mode.
   config.action_mailer.perform_deliveries = true

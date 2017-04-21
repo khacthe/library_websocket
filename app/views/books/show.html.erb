@@ -42,6 +42,7 @@
                     <%= f.submit "Borrow", class: "btn btn-primary" %>
                   </div>
                   <%= hidden_field_tag :book_id, @book.id %>
+                  <%= hidden_field_tag :status, "waiting" %>
                 <% end %>
               <% end %>
             <% end %>

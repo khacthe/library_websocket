@@ -277,7 +277,7 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-default .badge {
   color: white;
-  background-color: #222222;
+  background-color: #ee4b28;
 }
 .btn-primary {
   color: #999991;
@@ -470,7 +470,7 @@ td.smaller-image img {
 .logo_f{
   display: block;
   img{
-    max-width: 160px;
+    max-width: 86px;
     padding: 5px 0;
   }
 }
@@ -750,16 +750,15 @@ td.smaller-image img {
     padding:30px 0;
     border-radius: 4px;
     li{
+      border-bottom: 1px solid #e7e7e7;
       a{
         display: block;
         padding:10px;
         text-decoration: none;
-        color:#000;
-        border-bottom: solid 1px #ddd;
+        color:#23527c;
       }
       &:hover{
-        background: #C52F24;
-        color: #fff;
+        background: #eeeeee;
       }
     }
 
@@ -772,13 +771,6 @@ a.add{
   padding: 5px 10px;
   border-radius: 5px;
   font-style: italic;
-}
-.admin-page{
-  p.admin-search{
-    margin: 0;
-    text-align: right;
-    margin-top: -30px;
-  }
 }
 // Responsive
 
@@ -854,18 +846,22 @@ a.add{
   .navbar-default.affix .nav > li > a:focus:hover {
     color: #F05F40;
   }
-
-  // Porfolio
-
-  .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
-    font-size: 16px;
-  }
-  .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
-    font-size: 22px;
-  }
 }
 
- .admin-page{
+@media (max-width: 767px) {
+  .list_books ul {
+    margin: 0;
+    padding: 0;
+    li{
+      width: 100%;
+      display: block;
+    }
+  }
+  header .header-content{
+    overflow: hidden;
+  }
+}
+.admin-page{
   background: #fff;
  }
 .status_true{
@@ -880,9 +876,20 @@ a.add{
 .smaller-image_sm img{
   max-width: 60px;
 }
-form.edit_borrow_book{
-  padding: 60px;
+#edit_borrow{
+  .col-sm-8{
+    p{
+      margin-bottom: 10px;
+      color:#000;
+      font-weight: bold;
+      span{
+        padding-left: 10px;
+        color:red;
+      }
+    }
+  }
 }
+
 form.edit_borrow_book input {
     background: red;
     border: none;
@@ -893,7 +900,7 @@ form.edit_borrow_book input {
 
 form.edit_borrow_book select {
     border: none;
-    padding: 13px 120px;
+    padding: 13px 90px;
 }
 .average-review-rating{
   margin-top: 20px;
@@ -928,40 +935,12 @@ form.edit_borrow_book select {
     margin-bottom: 30px;
   }
 }
-.list-title{
-  text-align: center;
-  margin-bottom: 16px;
-}
-.dropdown.open{
-  .dropdown-menu{
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    li{
-      a{
-        display: block;
-        padding:10px;
-        color:#fff;
-      }
-      &:hover{
-        a{
-          background:#ee4b28;
-        }
-      }
-    }
-  }
-}
 .admin-page{
-margin-top: 55px;
+margin-top: 15px;
 border-radius: 5px;
 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 margin-bottom: 50px;
-table{
-    thead{
-      tr{
-        font-size: 11px;
-      }
-    }
-  }
+
 }
 .pagination a{
   padding: 5px 10px;
@@ -1006,10 +985,327 @@ table{
     font: 16px Verdana;
   }
 }
+.notification{
+  ul{
+    position: absolute;
+    right: 0;
+    top:105%;
+    background: #fff;
+    box-shadow:0 0px 0px rgba(0, 0, 0, 0.1), 0 0px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 15px 0;
+    max-height: 350px;
+    overflow-y:scroll;
+    z-index: 10;
+    box-sizing: border-box;
+    li{
+      position: relative;
+      a{
+        color: #337ab7;
+        text-decoration: none;
+        display: block;
+        font-size: 13px;
+        font-style: italic;
+        text-align: left;
+        padding: 15px 10px 25px 15px;
+        box-sizing: border-box;
+        &:hover{
+          background: inherit;
+          color:inherit;
+        }
+      }
+      span{
+        color: #928c8c;
+        font-style: italic;
+        position: absolute;
+        right: 8px;
+        z-index: 20;
+        bottom: 0;
+      }
+      &:after{
+        content:"";
+        clear: both;
+      }
+    }
+    li.read_false{
+      background: #e4e2e2;
+    }
+  }
+}
 
 .not-read {
   background-color: #E9EBEE;
 }
 .not-read a:hover, .not-read a:focus, .not-read a:active {
   background-color: #F6F7F9;
+}
+
+.badge.badge-danger{
+  background:#ee4b28;
+}
+td.accepted{
+  color:#09c50e;
+}
+td.waiting{
+  color:#0c33f1;
+}
+td.borrowed{
+  color:#8e0cf1;
+}
+td.rejected{
+  color:#e60b3e;
+}
+td.checked{
+  color:#b39e0a;
+}
+.profile_author p{
+  margin-top: 13px;
+  font-size: 13px;
+  text-align: left;
+}
+a.followauthor {
+  padding: 5px 10px;
+  border: solid 1px #ed431f;
+  text-decoration: none;
+  &:hover{
+    color:#fff;
+    background: #ed431f;
+  }
+}
+
+//Style Admin page
+
+body {
+    background-color: #f8f8f8;
+}
+
+// Wrappers
+
+#wrapper {
+    width: 100%;
+}
+
+#page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: white;
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 0 30px;
+        border-left: 1px solid #f8f8f8;
+    }
+}
+
+// --Topbar
+
+.navbar-top-links {
+    margin-right: 0;
+}
+
+.navbar-top-links li {
+    display: inline-block;
+}
+
+.navbar-top-links li:last-child {
+    margin-right: 15px;
+}
+
+.navbar-top-links li a {
+    padding: 15px;
+    min-height: 50px;
+}
+
+.navbar-top-links .dropdown-menu li {
+    display: block;
+}
+
+.navbar-top-links .dropdown-menu li:last-child {
+    margin-right: 0;
+}
+
+.navbar-top-links .dropdown-menu li a {
+    padding: 3px 20px;
+    min-height: 0;
+}
+
+.navbar-top-links .dropdown-menu li a div {
+    white-space: normal;
+}
+
+.navbar-top-links .dropdown-messages,
+.navbar-top-links .dropdown-tasks,
+.navbar-top-links .dropdown-alerts {
+    width: 310px;
+    min-width: 0;
+}
+
+.navbar-top-links .dropdown-messages {
+    margin-left: 5px;
+}
+
+.navbar-top-links .dropdown-tasks {
+    margin-left: -59px;
+}
+
+.navbar-top-links .dropdown-alerts {
+    margin-left: -123px;
+}
+
+.navbar-top-links .dropdown-user {
+    right: 0;
+    left: auto;
+}
+
+// --Sidebar
+
+.sidebar {
+    .sidebar-nav.navbar-collapse {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.sidebar .sidebar-search {
+    padding: 15px;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #f8f8f8;
+    a {
+        &.active {
+            background-color: #f8f8f8;
+        }
+    }
+}
+
+.sidebar .arrow {
+    float: right;
+}
+
+.sidebar .fa.arrow:before {
+    content: "\f104";
+}
+
+.sidebar .active > a > .fa.arrow:before {
+    content: "\f107";
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    border-bottom: none !important;
+}
+
+.sidebar .nav-second-level li a {
+    padding-left: 37px;
+}
+
+.sidebar .nav-third-level li a {
+    padding-left: 52px;
+}
+
+@media(min-width:768px) {
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 250px;
+        margin-top: 51px;
+    }
+
+    .navbar-top-links .dropdown-messages,
+    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-alerts {
+        margin-left: auto;
+    }
+}
+
+
+// Custom Colored Panels
+
+.huge {
+    font-size: 40px;
+}
+
+.panel-green {
+    border-color: #5cb85c;
+    > .panel-heading {
+        border-color: #5cb85c;
+        color: white;
+        background-color: #5cb85c;
+    }
+    > a {
+        color: #5cb85c;
+        &:hover {
+            color: #5cb85c;
+        }
+    }
+}
+
+.panel-red {
+    border-color: #d9534f;
+    > .panel-heading {
+        border-color: #d9534f;
+        color: white;
+        background-color: #d9534f;
+    }
+    > a {
+        color: #d9534f;
+        &:hover {
+            color: #d9534f;
+        }
+    }
+}
+
+.panel-yellow {
+    border-color: #f0ad4e;
+    > .panel-heading {
+        border-color: #f0ad4e;
+        color: white;
+        background-color: #f0ad4e;
+    }
+    > a {
+        color: #f0ad4e;
+        &:hover {
+            color: #f0ad4e;
+        }
+    }
+}
+.tab_search{
+  a{
+
+  }
+  .admin-search{
+    float: right;
+    input[type="text"]{
+      padding:0 5px;
+    }
+  }
+}
+.panel-default {
+  border-color: #ddd;
+  margin-top: 15px;
+}
+.admin-page{
+  .panel-heading{
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+    color: red;
+  }
+  .edit-form{
+    padding:10px 30px 30px 30px;
+  }
+}
+.sidebar-nav {
+  #side-menu{
+    li{
+      a{
+        text-transform: capitalize;
+        font-size: 16px;
+      }
+    }
+  }
 }

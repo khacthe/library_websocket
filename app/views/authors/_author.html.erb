@@ -1,18 +1,16 @@
 <li class="author">
   <div class="content_author">
     <h4 class="name_author"><%= link_to author.name, author %></h4>
+    <p><%=  except_text author.description.to_s %></p>
     <% unless current_user?(@user) %>
       <div id="follow_form_author_<%= author.id %>" class="btn_book">
         <% unless current_user.following_author?(author) %>
-          <%= form_for(current_user.follow_authors.build, remote: true) do |f| %>
-            <div><%= hidden_field_tag :author_id, author.id %></div>
-          <%= f.submit "Follow", class: "btn btn-primary" %>
-          <% end %>
+          <%= link_to t("users.follow"), "", class: "followauthor",
+            "data-id": author.id, remote: true %>
         <% else %>
-          <%= form_for(current_user.follow_authors.find_by(author_id: author.id),
-            html: { method: :delete }, remote: true) do |f| %>
-            <%= f.submit "Unfollow", class: "btn" %>
-          <% end %>
+          <%= link_to t("users.unfollow"), "",
+            class: "followauthor destroy",
+            "data-id": author.id, remote: true %>
         <% end %>
       </div>
     <% end %>

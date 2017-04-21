@@ -19,11 +19,12 @@ class Admin::BorrowBooksController < Admin::BaseController
   end
 
   def edit
-
   end
 
   def update
     if @borrow_book.update_attributes borrow_book_params
+      @borrow_book.user.send_borrow_email
+      Notification.create( user_id: @borrow_book.user.id, notification_type: "borrow", notification: "Admin library #{borrow_book_params[status]} your borrow", notification_link: "#{borrowing_book_user_path(@borrow_book.user)}" )
       flash[:success] = "Update borrow book success !"
       redirect_to admin_borrow_books_path
     else

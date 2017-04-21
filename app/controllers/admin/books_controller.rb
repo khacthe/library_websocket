@@ -78,7 +78,7 @@ class Admin::BooksController < Admin::BaseController
   end
 
   def find_book
-    @book = Book.find_by id: params[:id]
+    @book = Book.find_by slug: params[:id]
     unless @book
       flash[:alert] = t "users.nil_user"
       redirect_to admin_books_path

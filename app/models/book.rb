@@ -1,4 +1,8 @@
 class Book < ApplicationRecord
+
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
   has_many :borrow_books
   has_many :commments
   has_many :like_actives
@@ -6,7 +10,7 @@ class Book < ApplicationRecord
   has_many :passive_followbooks, class_name: "FollowBook",
     foreign_key: "book_id", dependent: :destroy
   has_many :followers_book, through: :passive_followbooks, source: :user_id
-  # has_many :notifications, as: :notificationable
+  
 
   belongs_to :user
   belongs_to :category
@@ -30,5 +34,11 @@ class Book < ApplicationRecord
         csv << book.attributes.values_at(*column_names)
       end
     end
+  end
+
+  private
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
   end
 end

@@ -1,8 +1,7 @@
 <tr>
   <td class="smaller-image"><%= image_tag book.image.url if book.image? %></td>
   <td><%= book.name %></td>
-  <td><%= book.description %></td>
-  <td><%= book.created_at %></td>
+  <td><%= except_text book.description.to_s, 200 %></td>
   <td>
     <%= link_to edit_admin_book_path(book), class: "btn_edit" do %>
       <i class="fa fa-pencil-square-o"></i>

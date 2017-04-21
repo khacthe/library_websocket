@@ -1,2 +1,17 @@
 <% provide(:button_text, "Update") %>
-<%= render "form" %>
+<div id="edit_borrow">
+  <div class="col-sm-4">
+    <div class="edit_borrow">
+      <%= image_tag @borrow_book.book.image.url if  @borrow_book.book.image? %>
+    </div>
+</div>
+<div class="col-sm-8">
+  <p>Borrow id: <span><%= @borrow_book.id %></span></p>
+  <p>Book borrow: <span> <%= @borrow_book.book.name %></span></p>
+  <p>User borrow: <span> <%= @borrow_book.user.fullname %></span></p>
+  <p>Borrow book from: <span><%= @borrow_book.date_from.to_date %></span></p>
+  <p>Borrow book to: <span><%= @borrow_book.date_to.to_date %></span></p>
+  <%= render "form" %>
+</div>
+</div>
+

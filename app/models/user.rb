@@ -55,10 +55,6 @@ class User < ApplicationRecord
       BCrypt::Password.create(string, cost: cost)
     end
 
-    def send_activation_email
-      UserMailer.account_activation(self).deliver_now
-    end
-
     def create_reset_digest
       self.reset_token = User.new_token
       update_attribute(:reset_digest,  User.digest(reset_token))
@@ -70,6 +66,10 @@ class User < ApplicationRecord
     digest = send("#{attribute}_digest")
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
   end
 
   def activate
@@ -137,6 +137,10 @@ class User < ApplicationRecord
 
   def borrowing_book? other_book
     borrowing_book.include? other_book
+  end
+
+  def send_borrow_email
+    UserMailer.borrow_book(self).deliver_now
   end
 
   private
